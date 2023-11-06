@@ -1,0 +1,65 @@
+<h1>Employees Form</h1>
+<hr>
+
+<div class="row animate__fadeIn animated_faster">
+    <div class="col">
+        <form (ngSubmit)="getEmployeeById( f )" #f="ngForm">
+            <div class="form-group">
+                <label>Employee ID</label>
+                <input type="text" class="form-control" placeholder="Employee ID" (ngModel)="employee.id" name="id" required>
+            </div>
+
+            <hr>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary w-25">
+                    <i class="fa fa-save"></i>
+                    Consultar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table *ngIf="showAllEmployees" class="table mt-3 animate__fadeIn animate__delay-1s">
+    <h1>Employees List</h1>
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Age</th>
+            <th scope="col">Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ employee.employee_name}}</td>
+            <td>{{ employee.employee_salary}}</td>
+            <td>{{ employee.employee_age}}</td>
+            <td>{{ employee.profile_image}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<table *ngIf="showEmployeeByID" class="table mt-3 animate__fadeIn animate__delay-1s">
+    <h1>Employee By Id</h1>
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Age</th>
+            <th scope="col">Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">{{ employee.id }}</th>
+            <td>{{ employee.employee_name}}</td>
+            <td>{{ employee.employee_salary}}</td>
+            <td>{{ employee.employee_age}}</td>
+            <td>{{ employee.profile_image}}</td>
+        </tr>
+    </tbody>
+</table>
